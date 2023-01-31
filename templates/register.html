@@ -1,0 +1,40 @@
+{% extends 'index.html'%}
+{% block content%}
+<div class="container">
+  {% if login %}
+  h1 class="my-5">Login</h1>
+  {% else %}
+<h1 class="display-1">Sign Up</h1>
+<p class="lead">Register below</p>
+
+  {% endif %}
+
+<form method="POST" id="signup">
+
+  {{ form.hidden_tag() }}
+
+  {% for field in form
+    if field.widget.input_type != 'hidden' %}
+  <p>
+    {{ field.label(class="form-label") }}
+    {{ field(class="form-control") }}
+
+    {% for error in field.errors %}
+    <span class="form-text text-danger">{{ error }}</span>
+    {% endfor %}
+  </p>
+  {% endfor %}
+
+  <button class="btn btn-success" type="submit">Register</button>
+
+</form>
+{% if login %}
+<button type="submit" class="btn btn-primary my-3">Login</button>
+<p>Don't have an account? <a href="/signup">Sign up</a></p>
+{% else %}
+<button type="submit" class="btn btn-primary my-3">Sign Up</button>
+<p>Already have an account? <a href="/login">Log in</a></p>
+{% endif %}
+</div>
+{% endblock%}
+

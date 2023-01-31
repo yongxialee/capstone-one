@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="conatiner text-center">
+    <div class="row">
+<img class="col" src="{{product["image"]}}">
+    </div>
+    <div class="row">
+    <p class="row">Title: {{product['title']}}</p>
+    <p class="col">Ingredients: {{product['ingredients']}}</p>
+    <p class="col">Description: {{product['description']}}</p>
+    </div>
+
+
+
+</div>
+{%endblock%}
