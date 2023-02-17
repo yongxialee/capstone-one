@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-10 col-md-7 forms rounded shadow">
+		<form method="POST" id="edit_form">
+			<div class="rounded form-banner">
+				<h2 class="text-center text-dark p-1">
+					Need to update something?
+				</h2>
+			</div>
+			<hr class="m-2">
+			<div class="row justify-content-center ps-4 pe-4">
+			{{ form.hidden_tag() }}
+				{% for field in form if field.widget.input_type != 'hidden' %}
+					<div class="form-group">
+						{{ field.label(class="form-label mt-2") }}
+						{{ field(class="form-control") }}
+					</div>
+					{% for error in field.errors %}
+						<small class="text-danger ps-2">
+							{{ error }}
+						</small>
+					{% endfor %}
+				{% endfor %}
+				<a href="/users/{{ user.id }}" class="btn btn-md btn-secondary col-4 col-sm-3 m-3">
+					Cancel
+				</a>
+				<button class="btn btn-primary btn-md col-4 col-sm-3 m-3">
+					Save
+				</button>
+			</div>
+		</form>
+    </div>
+</div>
+{% endblock %}

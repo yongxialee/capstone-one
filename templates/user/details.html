@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}User Info{% endblock %}
+
+{% block content %}
+<div class="container-sm mt-2" style="max-width: 1200px;">
+	<div class="row mx-auto">
+		
+		<div class="col-8 col-md-10 p-2 bg-light rounded">
+			<h1 class="h-50"> 
+				{{ user.username }}
+			</h1>
+			<div class="row p-2 mt-4">
+				<span class="col-3 col-md-1">
+					<i class="fa-solid fas fa-layer-group"></i>
+					<a href="/customize">
+					{{ user.customize | length }}
+				</span>
+				<span class="col-3 col-md-1">
+					<i class="fa-regular fas fa-star"></i>
+					<a href="{{ url_for('show_favorites', user_id=user.id) }}">
+						{{ user.favorites | length }}
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center mx-auto">
+	{% if current_user.id == user.id %}
+		<a href="/edit/{{ user.id }}" class="btn btn-md btn-outline-primary col-4 col-md-3 col-lg-2 mb-2 m-1">
+			Edit Profile
+		</a>
+		<form action="/users/delete" method="post">
+            <button class="btn btn-danger form-control m-1">
+                Confirm Delete
+            </button>
+        </form>
+	{% endif %}
+	
+	
+
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+
+{% extends 'base.html'%}
+
+{% block content%}
+<h2>Lists of iced Brewery</h2>
+<div>
+    {% for data in all_data %}
+    <a class="detail" data-id="{{data.id}}" href="{{url_for('show_details',id=data.id)}}"><img class="cup" src="{{data['image']}}"></a>
+    
+    {% endfor%}
+</div>
+
+
+
+{% endblock%}

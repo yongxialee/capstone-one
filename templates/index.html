@@ -18,13 +18,13 @@
 <body>
     <nav class="navbar navbar-brown  sticky-top justify-content-between" >
         <div class="container">
-          {% if g.user %} 
+          {% if current_user.is_authenticated %}
           <a href="/home" class="navbar-brand text-light">Treat yourself</a>
           {% else %}
           <a href="/" class="navbar-brand text-light">Treat yourself</a>
           {% endif %}
           <ul class="nav nav-tabs d-flex p-2">
-            {% if g.user %}
+            {% if current_user.is_authenticated %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navbardrop">
                 Choice
@@ -33,20 +33,25 @@
                 <li><a class="dropdown-item" href="/hot">Hot</a>
                 <li><a class="dropdown-item" href="/iced">Iced</a>
                 <li><hr class="dropdown-divider">
-                <li><a class="dropdown-item" href="#">Customization</a>
+                <li><a class="dropdown-item" href="/customize">Customization</a>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav flex-row float-right">
           
-
+            
             
             <li class="nav-item">
-              <a class="nav-link pr-3 text-light" href="/logout">Log Out</a>
+              <a class="nav-link pr-3 text-light" href="{{ url_for('show_favorites', user_id=current_user.id) }}">Favorite Items</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pr-3 text-light" href="/favorite">Favorite Items</a>
-            </li>
+              <a class="nav-link pr-3 text-light" href="{{ url_for('user_details', user_id=current_user.id) }}">
+                  {{ current_user.username }}
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pr-3 text-light" href="/logout">Log Out</a>
+          </li>
             {% else %}
             <li class="nav-item">
               <a class="nav-link pr-3 text-light" href="/login">Log In</a>

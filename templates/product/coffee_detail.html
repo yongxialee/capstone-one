@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="container-sm mt-2">
+    <div class="row justify-content-center">
+        <div class="col-4" style="min-width: 320px;">
+            <div>
+                <span>
+                <img class="card-img img-fluid" src={{product["image"]}} alt="{{ product.title }}">
+                </span>
+            </div>
+        </div>
+        <div class="col-8" >
+            
+           
+            <ul id="effect" class="list-group mt-2">
+                <li class="list-group-item bg-light">
+                    <h4 class="m-0">
+                        Details:
+                    </h4>
+                </li>
+                <li class="list-group-item">
+                    <h5>Title: <span>{{product['title']}}</span></h5>
+                    <h5>Ingredients:  <span>{{product['ingredients']}}</span></h5>
+                    <h5>Description:  <span>{{product['description']}}</span></h5>
+                </li>
+                <a href = "/customize" class="btn btn-primary stretched-link">Back To Creating Item</a>
+                
+            </ul>         
+        </div>
+    </div>
+    <div class="row justify-content-center">
+   
+    </div>
+</div>
+{%endblock%}

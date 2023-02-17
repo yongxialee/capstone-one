@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Liked Coffee{% endblock %}
+
+{% block content %}
+<div class="container-sm mt-2" style="max-width: 1200px;">
+    <h2 class="text-center">
+        {{ user.username }}'s Favorite Coffee
+    </h2>
+	<hr>
+	<ul>
+	{% for item in favorites%}
+	<li class="list-group" id="item">
+		<a href="/product/{{item.id}}"><img class="cup" src = "{{item.image}}"></a>
+    </li>
+	{% endfor%}
+	<a href = "/home" class="btn btn-primary stretched-link">Back to Home</a>
+</ul>
+
+</div>
+{% endblock %}

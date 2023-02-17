@@ -1,9 +1,9 @@
 
 from app import db
-from models import Product
+from models import Product,Customize
 import requests
 API_BASE_URL="https://api.sampleapis.com/coffee"
-db.metadata.clear()
+
 db.drop_all()
 db.create_all()
 
@@ -22,6 +22,7 @@ def save_all_items():
                 image=item['image'],
                 description =item['description'])
         db.session.add(p)
+        db.session.commit()
     for i in data_c:
         p_c = Product(
                 title = i['title'],
@@ -31,8 +32,19 @@ def save_all_items():
                 description =i['description'])
         db.session.add(p_c)
     
-  
-   
-    db.session.commit()
+        db.session.commit()
 
 save_all_items()
+# def customise_coffee():
+#         c1 = Customize(
+#                 title= "vanila latte",
+#                 type = 'Hot',
+#                 ingredients = ["espresso",'milk','foam'],
+#                 description="very yummy",
+                
+#                 image =" https://snacksandsips.com/wp-content/uploads/2020/05/03-Caramel-Latte.jpg"
+
+#         )
+#         db.session.add(c1)
+#         db.session.commit()
+# customise_coffee()

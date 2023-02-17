@@ -1,0 +1,66 @@
+{% extends 'base.html'%}
+{% block title%}
+User's items
+{% endblock%}
+
+{% block content%}
+<div class="container-sm-fluid">
+    <div class="row mx-auto">        
+        <div class="col-12 col-md-10 mt-3">
+            <div class="container-fluid">
+
+                <div id="DB" class="row justify-content-center">
+                    <h2>
+                        Create item below!
+                    </h2>
+                    {{ form.hidden_tag() }}
+                    <form class="new-coffee-form" action = "/api/coffee" method="post">
+                        
+                        <div class="d-flex">
+                            {% for field in form if field.widget.input_type != 'hidden' %}
+                                {{ field(class="form-control bg-light filter mb-2") }}
+                                {% for error in field.errors %}
+                                    <small class="text-danger">
+                                    {{ error }}
+                                    </small>
+                                {% endfor %}
+                            {% endfor %}
+                            <button class="btn btn-success" >
+                                Add 
+                            </button>  
+                        </div>
+                       
+                    </form>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h2 class="row justify-content-center">List All The Items!</h2>
+    <ul id="coffee-list" class="container">
+            
+        {% for coffee in all_coffee %}
+        
+        <li class="row justify-content-center rounded m-2">
+            <div class="col-md-10">
+                <img src="{{ coffee.image }}" alt="" class=" img">
+                <p class="carousel-caption ">
+                <a href="{{ url_for( 'show_coffee', coffee_id=coffee.id ) }}" >
+                    {{ coffee.title }}
+                </a>
+            
+                
+            </P>
+            <button data-id="{{coffee.id}}" class="delete-coffee">X</button>
+            </div>
+        </li>
+        {% endfor %}
+    
+    </ul>
+    
+</div>
+
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="/static/app.js"></script>
+{% endblock%}
