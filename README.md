@@ -1,5 +1,5 @@
 # happy coffee
-## Deployed on heroku: (https://happy-coffee.herokuapp.com/)
+## Deployed on render: (https://happy-coffee.onrender.com/))
 ## Description 
 Happy coffee is a site to look up coffee recipes as well as build coffee recipes. 
 
