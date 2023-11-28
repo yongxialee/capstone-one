@@ -10,7 +10,8 @@ import requests
 from sqlalchemy.exc import IntegrityError
 
 app=Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql:///happy_coffee'
+ '''app.config['SQLALCHEMY_DATABASE_URI']='postgresql:///happy_coffee' '''
+app.config['SQLALCHEMY_DATABASE_URI']="postgres://fozucbun:JraCb-1BH17RtDz1BeLtbHrWWjJf7Vl8@bubble.db.elephantsql.com/fozucbun"
 app.config['SQLCHEMY_TRACK_MODIFICATIONS']=False
 app.config['SQLALCHEMY_ECHO']=True
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
